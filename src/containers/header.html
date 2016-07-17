@@ -1,0 +1,11 @@
+<header>
+  <div>
+    Number of posts: {{ $ctrl.count }}
+  </div>
+  <div>
+    <input
+      placeholder="Filter posts..."
+      ng-model="$ctrl.currentFilter"
+      ng-change="$ctrl.changeFilter($ctrl.currentFilter)"/>
+  </div>
+</header>

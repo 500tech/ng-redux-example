@@ -1,0 +1,7 @@
+<span>
+  <h1>{{$ctrl.value}}</h1>
+  <select ng-options="option for option in $ctrl.options"
+    ng-model="$ctrl.value"
+    ng-change="$ctrl.onChange($ctrl.value)">
+  </select>
+</span>
