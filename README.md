@@ -3,7 +3,7 @@
 ## Prepare
 $ npm i
 
-## S
+## Start
 $ npm start
 
 ## Run tests
