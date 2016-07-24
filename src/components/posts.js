@@ -1,12 +1,4 @@
 class PostsController {
-  constructor($scope) {
-    $scope.$watch(() => {
-      console.count('digest posts');
-    }, angular.noop);
-  }
-  $onChanges(changes) {
-    console.count('changes');
-  }
 }
 
 const posts = {
