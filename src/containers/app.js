@@ -34,6 +34,7 @@ export const pureApp = {
     items: '<',
     isFetching: '<',
     lastUpdated: '<',
+    // actions:
     selectReddit: '<',
     invalidateReddit: '<',
     fetchPostsIfNeeded: '<'
