@@ -1,8 +1,8 @@
-import * as types from '../constants/ActionTypes';
+import { CHANGE_FILTER } from '../constants/ActionTypes';
 
 function changeFilter(filter) {
   return {
-    type: types.CHANGE_FILTER,
+    type: CHANGE_FILTER,
     payload: filter
   };
 }

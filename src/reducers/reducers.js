@@ -1,4 +1,5 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux-seamless-immutable';
+import Immutable from 'seamless-immutable';
 import {
   SELECT_REDDIT, INVALIDATE_REDDIT,
   REQUEST_POSTS, RECEIVE_POSTS,
@@ -14,23 +15,21 @@ export function selectedReddit(state = 'angularjs', action) {
   }
 }
 
-function posts(state = {
+function posts(state = Immutable({
   isFetching: false,
   didInvalidate: false,
   items: []
-}, action) {
+}), action) {
   switch (action.type) {
   case INVALIDATE_REDDIT:
-    return Object.assign({}, state, {
-      didInvalidate: true
-    });
+    return state.set('didInvalidate', true);
   case REQUEST_POSTS:
-    return Object.assign({}, state, {
+    return state.merge({
       isFetching: true,
       didInvalidate: false
     });
   case RECEIVE_POSTS:
-    return Object.assign({}, state, {
+    return state.merge({
       isFetching: false,
       didInvalidate: false,
       items: action.posts,
@@ -41,14 +40,12 @@ function posts(state = {
   }
 }
 
-export function postsByReddit(state = { }, action) {
+export function postsByReddit(state = Immutable({ }), action) {
   switch (action.type) {
   case INVALIDATE_REDDIT:
   case RECEIVE_POSTS:
   case REQUEST_POSTS:
-    return Object.assign({}, state, {
-      [action.reddit]: posts(state[action.reddit], action)
-    });
+    return state.set(action.reddit, posts(state[action.reddit], action));
   default:
     return state;
   }
